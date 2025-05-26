@@ -62,22 +62,15 @@ if __name__ == '__main__':
                         break_point_index = result[3]
                         m, b = result[5]
                         feature_map.features.append([[m,b], outermost_points])
-                        # end_points[0] = feature_map.project_point2line(outermost_points[0], m, b)
-                        # end_points[1] = feature_map.project_point2line(outermost_points[1], m, b)
-
-                        # colors = random_color()
-                        # for points in line_seg:
-                        #     environment.info_map.set_at((int(points[0][0]), int(points[0][1])), environment.green)
-                        #     pygame.draw.circle(environment.info_map, colors, (int(points[0][0]), int(points[0][1])), 2, 0)
-
-                        pygame.draw.line(environment.info_map, environment.red, outermost_points[0], outermost_points[1], 2)
                         environment.data_storage(sensor_data)
 
                         feature_map.features = feature_map.line_features2point()
                         feature_map.landmark_association(feature_map.features)
-            for l in features.landmarks:
-                pygame.draw.line(environment.info_map, environment.blue, l[1][0], l[1][1], 2)
+            
+            landmarks = features.line_segment_nms([i[1] for i in features.landmarks], angle_thresh=2, dist_thresh=3)
+            for l in landmarks:
+                pygame.draw.line(environment.info_map, environment.blue, l[0], l[1], 2)
         environment.map.blit(environment.info_map, (0,0))
         pygame.display.update()
-    print("number of landmarks: ", len(features.landmarks), " for example: ", features.landmarks[0], " features: ", feature_map.features[0])
+    print("number of landmarks: ", len(landmarks), " for example: ", landmarks[0], " features: ", feature_map.features[0])
 

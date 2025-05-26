@@ -7,6 +7,66 @@ from scipy.odr import Model, RealData, ODR                    # orthogonal dista
 
 landmarks = []
 
+def get_angle(line):
+    # Get angle in radians
+    (x1, y1), (x2, y2) = line
+    return math.atan2(y2 - y1, x2 - x1)
+
+def get_distance(p1, p2):
+    return np.linalg.norm(np.array(p1) - np.array(p2))
+
+
+def are_connected_and_aligned(l1, l2, angle_thresh=np.deg2rad(5), connect_thresh=10):
+    """Check if l1 and l2 are almost collinear and share a close endpoint."""
+
+    # Compare angles
+    a1 = get_angle(l1)
+    a2 = get_angle(l2)
+    angle_diff = abs(a1 - a2)
+    angle_diff = min(angle_diff, abs(math.pi - angle_diff))  # handle wrap-around
+
+    if angle_diff > angle_thresh:
+        return False
+
+    # Check endpoint proximity (in sequence)
+    for p1 in l1:
+        for p2 in l2:
+            if get_distance(p1, p2) < connect_thresh:
+                return True
+
+    return False
+
+def line_segment_nms(lines, angle_thresh=5, dist_thresh=15):
+    angle_thresh = np.deg2rad(angle_thresh)
+    merged = []
+    used = [False] * len(lines)
+
+    for i, seg in enumerate(lines):
+        if used[i]:
+            continue
+
+        group = [seg]
+        used[i] = True
+        changed = True
+
+        while changed:
+            changed = False
+            for j, other in enumerate(lines):
+                if used[j]:
+                    continue
+                if any(are_connected_and_aligned(s, other, angle_thresh, dist_thresh) for s in group):
+                    group.append(other)
+                    used[j] = True
+                    changed = True
+
+        # Flatten group into one long segment
+        all_pts = [pt for s in group for pt in s]
+        all_pts = sorted(set(all_pts), key=lambda p: (p[0], p[1]))
+        merged.append((all_pts[0], all_pts[-1]))
+
+    return merged
+
+
 class featureDetection:
     def __init__(self):
         # vars
