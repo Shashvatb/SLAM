@@ -10,6 +10,9 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # launch file add
+        ('share/' + package_name + '/launch', ['launch/simple.launch.py']),
+        # end of launch file add
     ],
     install_requires=['setuptools'],
     zip_safe=True,

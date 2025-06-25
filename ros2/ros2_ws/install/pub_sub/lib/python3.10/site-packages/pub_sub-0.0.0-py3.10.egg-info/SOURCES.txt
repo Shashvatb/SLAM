@@ -8,6 +8,7 @@ setup.py
 ../../build/pub_sub/pub_sub.egg-info/requires.txt
 ../../build/pub_sub/pub_sub.egg-info/top_level.txt
 ../../build/pub_sub/pub_sub.egg-info/zip-safe
+launch/simple.launch.py
 pub_sub/__init__.py
 pub_sub/publisher.py
 pub_sub/subscriber.py
