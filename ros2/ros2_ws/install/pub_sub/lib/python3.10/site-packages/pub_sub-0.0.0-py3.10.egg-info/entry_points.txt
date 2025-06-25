@@ -1,0 +1,4 @@
+[console_scripts]
+minimal_publisher = pub_sub.publisher:main
+minimal_subscriber = pub_sub.subscriber:main
+
