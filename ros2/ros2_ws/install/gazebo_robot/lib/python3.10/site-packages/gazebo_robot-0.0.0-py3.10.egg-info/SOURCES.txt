@@ -8,6 +8,7 @@ setup.py
 ../../build/gazebo_robot/gazebo_robot.egg-info/requires.txt
 ../../build/gazebo_robot/gazebo_robot.egg-info/top_level.txt
 ../../build/gazebo_robot/gazebo_robot.egg-info/zip-safe
+config/controller.yaml
 gazebo_robot/__init__.py
 launch/gazebo_robot_xacro.launch.py
 resource/gazebo_robot

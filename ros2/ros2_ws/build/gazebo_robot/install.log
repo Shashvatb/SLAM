@@ -4,6 +4,7 @@
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/share/gazebo_robot/package.xml
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/share/gazebo_robot/launch/gazebo_robot_xacro.launch.py
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/share/gazebo_robot/urdf/gazebo_robot_xacro.urdf.xacro
+/mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/share/gazebo_robot/config/controller.yaml
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/lib/python3.10/site-packages/gazebo_robot-0.0.0-py3.10.egg-info/dependency_links.txt
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/lib/python3.10/site-packages/gazebo_robot-0.0.0-py3.10.egg-info/entry_points.txt
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/gazebo_robot/lib/python3.10/site-packages/gazebo_robot-0.0.0-py3.10.egg-info/PKG-INFO

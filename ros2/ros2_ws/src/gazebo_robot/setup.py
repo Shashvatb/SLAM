@@ -12,6 +12,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', ['launch/gazebo_robot_xacro.launch.py']),
         ('share/' + package_name + '/urdf', ['urdf/gazebo_robot_xacro.urdf.xacro']),
+        ('share/' + package_name + '/config', ['config/controller.yaml'])
     ],
     install_requires=['setuptools'],
     zip_safe=True,

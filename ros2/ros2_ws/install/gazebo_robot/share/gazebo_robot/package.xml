@@ -9,6 +9,12 @@
   <!-- added -->
   <exec_depend>rclpy</exec_depend>
   <exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
   <!-- end -->
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

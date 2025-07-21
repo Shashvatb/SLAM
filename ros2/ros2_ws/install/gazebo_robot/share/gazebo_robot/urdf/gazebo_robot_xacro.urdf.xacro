@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <robot name="simple_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- XACRO -->
   <xacro:property name="wheel_radius" value="0.1" />
   <xacro:property name="wheel_length" value="0.05" />
   <xacro:property name="base_size" value="1.0 0.95 0.1" />
   <xacro:property name="base_origin" value="0 0 0.1" />
  
+  <!-- links and joint -->
   <!-- Base link (rectangle) -->
   <link name="base_link">
     <visual>
@@ -94,4 +96,48 @@
     <axis xyz="0 1 0"/>
     <!-- <limit effort="1.0" velocity="1.0" lower="-1.5708" upper="1.5708"/> -->
   </joint>
+
+  <!-- Transmission block -->
+  <transmission name="left_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="right_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ROS2 controls -->
+  <ros2_control name="MyRobotHardware" type="system">
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+  <joint name="left_wheel_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="right_wheel_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="velocity"/>
+  </joint>
+</ros2_control>
+
+<!-- Gazebo block -->
+<gazebo>
+  <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so"/>
+</gazebo>
+
 </robot>
