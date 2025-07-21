@@ -26,6 +26,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'forward_drive_publisher = simple_robot.forward_drive_publisher:main'
         ],
     },
 )

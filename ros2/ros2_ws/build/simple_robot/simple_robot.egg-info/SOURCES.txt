@@ -14,6 +14,7 @@ resource/simple_robot
 rviz/my_robot_config.rviz
 rviz/my_robot_config_xacro.rviz
 simple_robot/__init__.py
+simple_robot/forward_drive_publisher.py
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
