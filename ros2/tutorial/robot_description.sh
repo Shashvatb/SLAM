@@ -46,6 +46,32 @@ sudo apt install ros-humble-joint-state-publisher
 # axis describes axis of rotation for the joint (rpy, xyz)
 # dynamics describes damping (N s/m) and static friction (N)
 # limit are for revolute and prismatic joints only. includes lower (rad), upper (rad), effort (Nm), velocity (rad/s)
+colcon build --packages-select simple_robot
+source install/local_setup.bash
+
+# run the state publisher
+ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(< ros2/ros2_ws/src/simple_robot/urdf/simple_robot.xml)"
+
+# check if the publisher works
+ros2 run tf2_tools view_frames
+
+# run joint state publisher. this shows us parameters for the links
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
+
+# run rviz. 
+# make sure the correct frame is selected in the global settings on the left panel
+# make sure to add -> RobotModel
+# Make sure to select the right robot description
+rviz2
+
+# recap: we have set the fixed frame to "world", added RobotModle and selected the description as /robot_description
+# now we will save this rviz config with file -> save config as. I am saving it inside my package under a new folder called rviz
+# now we want to run all of this with a launch file (simple_robot.launch.py)
+# lets rebuild the package (we might not need it, but just to be safe)
+# dont forget to add the config file in your setup.py
+colcon build --packages-select simple_robot
+source install/local_setup.bash
+ros2 launch simple_robot simple_robot.launch.py
 
 ## XACRO - we can make the URDF file better by calling in fuctions inside it
 # check simple_robot_xacro.urdf.xacro file for example
@@ -62,3 +88,7 @@ xacro model.xacro > model.urdf
 #   ...
 # </xacro:macro
 # USAGE <xacro:macro_name param1=""/>
+
+#launch and check the file\
+sudo apt install ros-humble-xacro
+ros2 launch simple_robot simple_robot_xacro.launch.py

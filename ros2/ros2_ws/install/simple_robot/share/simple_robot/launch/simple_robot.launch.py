@@ -5,7 +5,10 @@ import os
 def generate_launch_description():
     urdf_path = os.path.abspath(os.path.join(
         os.path.dirname(__file__), '..', 'urdf', 'simple_robot.xml'
-    ))
+        ))
+    rviz_config_file = os.path.abspath(os.path.join(
+        os.path.dirname(__file__), '..', 'rviz', 'my_robot_config.rviz'
+        ))
 
     with open(urdf_path, 'r') as infp:
         robot_desc = infp.read()
@@ -25,6 +28,8 @@ def generate_launch_description():
         Node(
             package='rviz2',
             executable='rviz2',
-            output='screen',
-        )
+            name='rviz2',
+            arguments=['-d', rviz_config_file],
+            output='screen'
+        ),
     ])

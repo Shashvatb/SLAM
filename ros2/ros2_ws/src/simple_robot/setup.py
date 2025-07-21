@@ -14,6 +14,8 @@ setup(
         ('share/' + package_name + '/launch', ['launch/simple_robot_xacro.launch.py']),
         ('share/' + package_name + '/urdf', ['urdf/simple_robot.xml']),
         ('share/' + package_name + '/urdf', ['urdf/simple_robot_xacro.urdf.xacro']),
+        ('share/' + package_name + '/rviz', ['rviz/my_robot_config.rviz']),
+        ('share/' + package_name + '/rviz', ['rviz/my_robot_config_xacro.rviz']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

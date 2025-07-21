@@ -7,6 +7,10 @@ import os
 def generate_launch_description():
     urdf_file = os.path.join(
         os.path.dirname(__file__), '..', 'urdf', 'simple_robot_xacro.urdf.xacro')
+    
+    rviz_config_file = os.path.abspath(os.path.join(
+        os.path.dirname(__file__), '..', 'rviz', 'my_robot_config_xacro.rviz'
+        ))
 
     return LaunchDescription([
         Node(
@@ -17,12 +21,16 @@ def generate_launch_description():
                 value_type=str
             )}]
         ),
-        Node(
-            package='joint_state_publisher',
-            executable='joint_state_publisher'
+       Node(
+            package='joint_state_publisher_gui',
+            executable='joint_state_publisher_gui',
+            output='screen',
         ),
         Node(
             package='rviz2',
-            executable='rviz2'
-        )
+            executable='rviz2',
+            name='rviz2',
+            arguments=['-d', rviz_config_file],
+            output='screen'
+        ),
     ])

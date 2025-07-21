@@ -6,6 +6,8 @@
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/share/simple_robot/launch/simple_robot_xacro.launch.py
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/share/simple_robot/urdf/simple_robot.xml
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/share/simple_robot/urdf/simple_robot_xacro.urdf.xacro
+/mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/share/simple_robot/rviz/my_robot_config.rviz
+/mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/share/simple_robot/rviz/my_robot_config_xacro.rviz
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/lib/python3.10/site-packages/simple_robot-0.0.0-py3.10.egg-info/dependency_links.txt
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/lib/python3.10/site-packages/simple_robot-0.0.0-py3.10.egg-info/entry_points.txt
 /mnt/c/job/repos/SLAM/ros2/ros2_ws/install/simple_robot/lib/python3.10/site-packages/simple_robot-0.0.0-py3.10.egg-info/PKG-INFO
