@@ -44,30 +44,33 @@ def generate_launch_description():
 
     # Joint State Broadcaster
     joint_state_broadcaster = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
-        output='screen'
+    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
+    output='screen'
     )
-
+    
     # Diff Drive Controller
-    trajectory_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'diff_driver_controller'],
-        output='screen'
+    diff_drive_controller = ExecuteProcess(
+    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'diff_drive_controller'],
+    output='screen'
     )
 
     # Controller Manager
-    controller_manager = Node(
-            package='controller_manager',
-            executable='ros2_control_node',
-            parameters=[{'robot_description': open(urdf_file).read()}, controller_config],
-            output='screen'
-        )
+    controller_manager_node = Node(
+    package='controller_manager',
+    executable='ros2_control_node',
+    parameters=[
+        {'robot_description': Command(['xacro', urdf_file])},
+        controller_config
+        ],
+    output='screen'
+)
 
     return LaunchDescription([
         state_publisher,
         spawn_node,
         gazebo,
-        controller_manager,
+        controller_manager_node,
 
         joint_state_broadcaster,
-        trajectory_controller
+        diff_drive_controller
     ])

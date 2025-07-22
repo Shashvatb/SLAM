@@ -54,6 +54,7 @@
                iyy="0.001" iyz="0.0"
                izz="0.001"/>
     </inertial>
+    <dynamics damping="0.7" friction="0.2"/>
   </link>
 
    <!-- Right wheel -->
@@ -77,6 +78,7 @@
                iyy="0.001" iyz="0.0"
                izz="0.001"/>
     </inertial>
+    <dynamics damping="0.7" friction="0.2"/>
   </link>
 
   <!-- Left wheel joint -->
